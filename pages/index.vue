@@ -11,9 +11,9 @@
           and ahead of the curve.
         </strong>
       </h5>
-      <div>
+      <div v-for="news in newsletters" :key="news.id">
         <b-card
-          title="Card Title"
+          :title="news.title"
           img-src="https://picsum.photos/600/300/?image=25"
           img-alt="Image"
           img-top
@@ -63,11 +63,30 @@
 
 <script>
 // import Logo from '~/components/Logo.vue'//
+import axios from 'axios'
 
-// export default {
-// components: {
-//   Logo
-// }
+export default {
+  data() {
+    return {
+      newsletters: []
+    }
+  },
+  created() {
+    this.extraeApi()
+  },
+  methods: {
+    extraeApi() {
+      axios
+        .get('https://newsletters.academlo.com/api/v1/newsletters')
+        .then((response) => {
+          this.newsletters = response.data
+          console.log(this.newsletters)
+        })
+    }
+  }
+  // components: {
+  //   Logo
+}
 </script>
 
 <style>
