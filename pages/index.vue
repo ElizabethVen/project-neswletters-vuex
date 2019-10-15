@@ -14,17 +14,14 @@
       <div v-for="news in newsletters" :key="news.id">
         <b-card
           :title="news.title"
-          img-src="https://picsum.photos/600/300/?image=25"
+          :img-src="news.image"
           img-alt="Image"
           img-top
           tag="article"
           style="max-width: 20rem;"
           class="mb-2"
         >
-          <b-card-text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </b-card-text>
+          <b-card-text>{{ news.description }}</b-card-text>
 
           <b-button href="#" variant="primary">Go somewhere</b-button>
         </b-card>
@@ -39,10 +36,10 @@
           launch them. Vote for all favorites:
         </strong>
       </h5>
-      <div>
+      <div v-for="news in newsletters" :key="news.id">
         <b-card
-          title="Card Title"
-          img-src="https://picsum.photos/600/300/?image=25"
+          :title="news.title"
+          :img-src="news.image"
           img-alt="Image"
           img-top
           tag="article"
@@ -53,7 +50,7 @@
             Some quick example text to build on the card title and make up the
             bulk of the card's content.
           </b-card-text>
-
+          {{ news.description }}
           <b-button href="#" variant="primary">Go somewhere</b-button>
         </b-card>
       </div>
@@ -84,8 +81,6 @@ export default {
         })
     }
   }
-  // components: {
-  //   Logo
 }
 </script>
 
@@ -120,4 +115,10 @@ export default {
 .links {
   padding-top: 15px;
 }
+
+.title_header {
+  font-family: 'Fjalla One', sans-serif;
+}
 </style>
+
+<!--<link href="https://fonts.googleapis.com/css?family=Fjalla+One&display=swap" rel="stylesheet">-->
